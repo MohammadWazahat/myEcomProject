@@ -6,8 +6,11 @@ const SingleProduct = (item) => {
       <div className=" p-2 border border-slate-700 ">
         <div>
           <div>{item.id}</div>
-          <div>{item.title}</div>
-          <div>{item.category}</div>
+          <div>
+            <img src={item.images[0]} alt="" />
+          </div>
+          <div>{item.product_name}</div>
+          <div>{item.brand}</div>
           <div></div>
         </div>
       </div>
