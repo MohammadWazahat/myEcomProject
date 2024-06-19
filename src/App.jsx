@@ -1,11 +1,14 @@
 import React from "react";
 import AllComponents from "./components/AllComponents";
-import './App.css'
+import "./App.css";
+import DataProvider from "./contexts/AllDataContext";
 
 const App = () => {
   return (
     <div>
-    <AllComponents/>
+      <DataProvider>
+        <AllComponents />
+      </DataProvider>
     </div>
   );
 };

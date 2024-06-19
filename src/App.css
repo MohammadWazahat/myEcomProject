@@ -1,3 +1,8 @@
-*{
-    background-color: #fbc7c7;
+* {
+  background-color: #fbc7c7;
+}
+
+button {
+  margin: 2px;
+  border: 1px solid black;
 }
