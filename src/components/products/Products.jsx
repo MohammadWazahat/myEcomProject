@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import { AllDataContext } from "../../contexts/AllDataContext";
 import SingleProduct from "../singleProduct/SingleProduct";
+import { NavLink } from "react-router-dom";
 import "./Products.css";
+import ViewProduct from "../viewProduct/ViewProduct";
 
 const Products = () => {
-  const { myData, AddToMyCart } = useContext(AllDataContext);
+  const { myData, AddToMyCart,AddToPage } = useContext(AllDataContext);
   const [mode, setMode] = useState(true);
+
   // console.log(newDatas)
+
 
   // console.log(myData)
   return (
@@ -27,6 +31,15 @@ const Products = () => {
               <button className="p-2" onClick={() => AddToMyCart({ ...item })}>
                 Add to cart
               </button>
+              <NavLink to={`/viewProduct/${item.id}`}>
+                <button className="p-2" onClick={() => AddToPage({ ...item })}>
+                  More details ...
+                </button>
+              </NavLink>
+
+              {/* <button className="p-2" onClick={() => AddToPage({ ...item })} >
+              More details ...1
+              </button> */}
             </div>
           );
         })}

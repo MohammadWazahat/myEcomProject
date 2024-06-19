@@ -18,6 +18,13 @@ const DataProvider = ({ children }) => {
     // console.log(newDatas)
   };
 
+  const [viewData, setViewData] = useState();
+  const AddToPage = (x) => {
+    // console.log(x);
+    setViewData({ ...x });
+    // console.log(viewData);
+  };
+
   return (
     <AllDataContext.Provider
       value={{
@@ -25,6 +32,8 @@ const DataProvider = ({ children }) => {
         myData: myData,
         AddToMyCart: AddToMyCart,
         newDatas: newDatas,
+        AddToPage : AddToPage,
+        viewData : viewData,
       }}
     >
       {children}

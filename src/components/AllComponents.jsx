@@ -7,6 +7,7 @@ import SingleProduct from "./singleProduct/SingleProduct";
 import About from "./about/About";
 import Navbar from "./header/Navbar";
 import Footer from './footer/Footer'
+import ViewProduct from "./viewProduct/ViewProduct";
 
 const router = createBrowserRouter([
   {
@@ -40,11 +41,11 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/singleproduct/:id",
+    path: "/viewProduct/:id",
     element: (
       <>
         <Navbar />
-        <SingleProduct />
+        <ViewProduct />
         <Footer />
       </>
     ),
