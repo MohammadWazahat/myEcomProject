@@ -7,14 +7,14 @@ const Navbar = () => {
     <div>
       <section>
         <header>
-          <div className="flex justify-around items-center  border border-slate-700 h-12 ">
-            <div className="navTitle text-2xl">
+          <div className="flex flex-col m-4 p-4 justify-around items-center ">
+            <div className=" m-4 text-4xl font-bold">
               <span className="alphaColor">E</span>-COM
               <span className="alphaColor"> W</span>ORLD
             </div>
-            <div className="navLinks text-xl">
-              <ul className="flex gap-6">
-                <li className="navlink">
+            <div className=" flex m-4 text-xl">
+              <ul className="flex flex-col  gap-6">
+                <li className="navlink ">
                   <NavLink to="/" className="clickLink">
                     Home
                   </NavLink>
@@ -43,7 +43,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="horizonLineBox">
-            <hr className="horizon" />
+            <hr className="horizon boder border-slate-800 mx-4" />
           </div>
         </header>
       </section>

@@ -18,6 +18,14 @@ const DataProvider = ({ children }) => {
     // console.log(newDatas)
   };
 
+  const [addMore, setAddMore] = useState([]);
+
+  const AddMoreToMyCart = (x) => {
+    // console.log(x);
+    setAddMore([...addMore, x]);
+    // console.log(newDatas)
+  };
+
   const [viewData, setViewData] = useState();
   const AddToPage = (x) => {
     // console.log(x);
@@ -32,8 +40,10 @@ const DataProvider = ({ children }) => {
         myData: myData,
         AddToMyCart: AddToMyCart,
         newDatas: newDatas,
-        AddToPage : AddToPage,
-        viewData : viewData,
+        AddToPage: AddToPage,
+        viewData: viewData,
+        addMore: addMore,
+        AddMoreToMyCart: AddMoreToMyCart,
       }}
     >
       {children}
