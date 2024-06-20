@@ -4,15 +4,39 @@ import SingleProduct from "../singleProduct/SingleProduct";
 import { NavLink } from "react-router-dom";
 import "./Products.css";
 import { SortAndFilterContext } from "../../contexts/SortAndFilterContext";
+import FilterProduct from "./FilterProduct";
 
 const Products = () => {
   const { AddToMyCart, AddToPage } = useContext(AllDataContext);
   const [mode, setMode] = useState(true);
-  const { state, SortAscRed, SortDescRed, SortLowestRed, SortHighestRed } =
-    useContext(SortAndFilterContext);
+  const {
+    state,
+    SortAscRed,
+    SortDescRed,
+    SortLowestRed,
+    SortHighestRed,
+    arr,
+    FilterByBrand,
+  } = useContext(SortAndFilterContext);
 
+  // const initialState = state ;
+  // console.log(initialState)
+  // const reducer = (state,action)=>{
+  //   return state ;
+  // }
+  //    const[newState,dispatch] = useReducer(reducer,initialState)
   return (
     <>
+      {/* <FilterProduct/> */}
+      <div>
+        {arr.map((item, index) => {
+          return (
+            <button key={index} onClick={() => FilterByBrand(item)}>
+              {item}
+            </button>
+          );
+        })}
+      </div>
       <div>
         <button onClick={() => setMode(true)}>Grid</button>
         <button onClick={() => setMode(false)}>list</button>

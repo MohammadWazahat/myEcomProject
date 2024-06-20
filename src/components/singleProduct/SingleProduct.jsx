@@ -11,6 +11,7 @@ const SingleProduct = (item) => {
           </div>
           <div>{item.product_name}</div>
           <div>{item.brand}</div>
+          <div>{item.price}</div>
           <div></div>
         </div>
       </div>
