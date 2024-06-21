@@ -1,0 +1,54 @@
+import React, { createContext, useContext, useReducer, useState } from "react";
+import reducer from "../reducers/CartReducer";
+import { AllDataContext } from "./AllDataContext";
+
+export const CartContext = createContext();
+
+const CartProvider = ({ children }) => {
+  //   const { myData } = useContext(AllDataContext);
+  const initialState = {
+    cart: [],
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // For adding item in the cart from product page
+  const AddToMyCart = (x) => {
+    // console.log(x)
+    dispatch({ type: "ADD_TO_MY_CART", payload: x });
+  };
+
+  // For adding item in the cart from view page
+  const AddMoreToMyCart = (x) => {
+    // console.log("i m clicked");
+    dispatch({ type: "ADD_MORE_TO_MY_CART", payload: x });
+  };
+
+  // For deleting Single item from the cart by delete button/icon
+  const deleteCartItem = (x) => {
+    // console.log(x);
+    dispatch({ type: "DELETE_CART_ITEM", payload: x });
+  };
+
+  // For deleting All items from the cart by delete All button
+  const deleteAllCartItems = () => {
+    //   console.log("i m clicked");
+    dispatch({ type: "DELETE_ALL_CART_ITEM" });
+  };
+
+  return (
+    <CartContext.Provider
+      value={{
+        state: state,
+        deleteCartItem: deleteCartItem,
+        AddToMyCart: AddToMyCart,
+        AddMoreToMyCart: AddMoreToMyCart,
+        deleteAllCartItems: deleteAllCartItems,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export default CartProvider;

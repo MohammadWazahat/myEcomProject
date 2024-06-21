@@ -4,6 +4,7 @@ import "./App.css";
 import DataProvider from "./contexts/AllDataContext";
 import SortAndFilterProvider from "./contexts/SortAndFilterContext";
 import HomeProvider from "./contexts/HomeContext";
+import CartProvider from "./contexts/CartContext";
 
 const App = () => {
   return (
@@ -11,7 +12,9 @@ const App = () => {
       <DataProvider>
         <SortAndFilterProvider>
           <HomeProvider>
-            <AllComponents />
+            <CartProvider>
+              <AllComponents />  
+            </CartProvider>
           </HomeProvider>
         </SortAndFilterProvider>
       </DataProvider>

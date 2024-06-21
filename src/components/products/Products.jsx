@@ -4,9 +4,12 @@ import SingleProduct from "../singleProduct/SingleProduct";
 import { NavLink } from "react-router-dom";
 import "./Products.css";
 import { SortAndFilterContext } from "../../contexts/SortAndFilterContext";
+import { CartContext } from "../../contexts/CartContext";
 
 const Products = () => {
-  const { AddToMyCart, AddToPage } = useContext(AllDataContext);
+  const { AddToPage } = useContext(AllDataContext);
+  const { AddToMyCart } = useContext(CartContext);
+ 
   const [mode, setMode] = useState(true);
   const {
     state,

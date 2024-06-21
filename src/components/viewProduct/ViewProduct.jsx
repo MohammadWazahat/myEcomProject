@@ -3,9 +3,12 @@ import { AllDataContext } from "../../contexts/AllDataContext";
 import StarRating from "./StarRating";
 import QuantityAdder from "./QuantityAdder";
 import ProductColor from "./ProductColor";
+import { CartContext } from "../../contexts/CartContext";
 
 const ViewProduct = () => {
-  const { viewData, AddMoreToMyCart } = useContext(AllDataContext);
+  const { viewData } = useContext(AllDataContext);
+  const { AddMoreToMyCart } = useContext(CartContext);
+  
   // console.log(viewData);
 
   return (

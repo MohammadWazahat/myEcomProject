@@ -25,11 +25,6 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="navlink">
-                  <NavLink to="/singleProduct/:id" className="clickLink">
-                    SingleProduct
-                  </NavLink>
-                </li>
-                <li className="navlink">
                   <NavLink to="/about" className="clickLink">
                     About
                   </NavLink>
