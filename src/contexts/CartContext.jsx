@@ -11,22 +11,27 @@ import { AllDataContext } from "./AllDataContext";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  //   const { myData } = useContext(AllDataContext);
+    const { myData , amount } = useContext(AllDataContext);
 
   //To Save cart data during refreshes in local storage
-  const getLocalCartData = () => {
-    const cartData = localStorage.getItem("myCart");
-    if (cartData == []) {
-      return [];
-    } else {
-      return JSON.parse(cartData);
-    }
-  };
+  // const getLocalCartData = () => {
+  //   const cartData = localStorage.getItem("myCart");
+  //   if (cartData == []) {
+  //     return [];
+  //   } else {
+  //     return JSON.parse(cartData);
+  //   }
+  // };
 
   const initialState = {
-    cart: getLocalCartData(),
-    // cart : [],
+    // cart: getLocalCartData(),
+    amount : amount,
+    cart : [],
   };
+
+  // useEffect(()=>{
+  //   console.log(state.amount)
+  // },[amount])
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -55,11 +60,11 @@ const CartProvider = ({ children }) => {
   };
 
   //To Save cart data during refreshes in local storage
-  useEffect(() => {
-    // console.log("hey guys")
-    // console.log(state.cart)
-    localStorage.setItem("myCart", JSON.stringify(state.cart));
-  }, [state.cart]);
+  // useEffect(() => {
+  //   // console.log("hey guys")
+  // //  console.log(state.myData)
+  //   localStorage.setItem("myCart", JSON.stringify(state.cart));
+  // }, [state.cart]);
 
   return (
     <CartContext.Provider

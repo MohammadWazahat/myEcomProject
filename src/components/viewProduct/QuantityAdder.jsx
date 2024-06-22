@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AllDataContext } from "../../contexts/AllDataContext";
 
 const QuantityAdder = (viewData) => {
-    // console.log(viewData.quantity)
-  const stock = viewData.quantity ;
-  const [amount, setAmount] = useState(1);
-  const setDecrease = () => {
-    amount > 1 ? setAmount(amount - 1) : setAmount(1);
-  };
-  const setIncrease = () => {
-    amount < stock ? setAmount(amount + 1) : setAmount(stock);
-  };
+  // console.log(viewData.quantity)
+  const { setDecrease, setIncrease, amount } = useContext(AllDataContext);
+
   return (
     <div className="flex gap-4">
       <button

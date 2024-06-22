@@ -6,26 +6,9 @@ import Data from "../DummyProducts.json";
 export const AllDataContext = createContext();
 
 const DataProvider = ({ children }) => {
-  
   const initialState = { Data: Data };
   const [state, dispatch] = useReducer(reducer, initialState);
   const myData = state.Data;
-
-  // const [newDatas, setNewDatas] = useState([]);
-
-  // const AddToMyCart = (x) => {
-  //   // console.log(x);
-  //   setNewDatas([...newDatas, x]);
-  //   // console.log(newDatas)
-  // };
-
-  // const [addMore, setAddMore] = useState([]);
-
-  // const AddMoreToMyCart = (x) => {
-  //   // console.log(x);
-  //   setAddMore([...addMore, x]);
-  //   // console.log(newDatas)
-  // };
 
   const [viewData, setViewData] = useState();
   const AddToPage = (x) => {
@@ -33,19 +16,27 @@ const DataProvider = ({ children }) => {
     setViewData({ ...x });
     // console.log(viewData);
   };
+  console.log(viewData);
+
+  const [amount, setAmount] = useState(1);
+  const setDecrease = () => {
+    amount > 1 ? setAmount(amount - 1) : setAmount(1);
+  };
+  const setIncrease = () => {
+      const stock = viewData.quantity;
+    amount < stock ? setAmount(amount + 1) : setAmount(stock);
+  };
 
   return (
     <AllDataContext.Provider
       value={{
         state: state,
         myData: myData,
-            
+        setIncrease: setIncrease,
+        setDecrease: setDecrease,
+        amount: amount,
         AddToPage: AddToPage,
         viewData: viewData,
-        // newDatas: newDatas,
-        // addMore: addMore,
-        // AddToMyCart: AddToMyCart,  
-        // AddMoreToMyCart: AddMoreToMyCart,
       }}
     >
       {children}

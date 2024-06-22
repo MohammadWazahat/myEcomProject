@@ -32,7 +32,7 @@ const CartReducer = (state, action) => {
   if (action.type === "DELETE_ALL_CART_ITEM") {
     return {
       ...state,
-      cart: [],
+      cart:[],
     };
   }
 

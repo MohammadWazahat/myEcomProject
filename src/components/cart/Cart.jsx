@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AllDataContext } from "../../contexts/AllDataContext";
 import { CartContext } from "../../contexts/CartContext";
+import QuantityAdder from "../viewProduct/QuantityAdder";
 
 const Cart = () => {
   const { state, deleteCartItem, deleteAllCartItems } = useContext(CartContext);
@@ -10,21 +11,40 @@ const Cart = () => {
   // console.log(data)
   return (
     <>
-      <div>
+      <div className="brd flex flex-col gap-2">
         {data.map((item, index) => {
           return (
-            <div className="flex gap-4" key={index}>
-              <div>{item.id}</div>
-              <div>{item.product_name}</div>
-              <div>{item.brand}</div>
-              <button onClick={() => deleteCartItem(item.id)}>delete</button>
-            </div>
+            <>
+              <div>
+                <div className="flex gap-8 brd p-4 m-2" key={index}>
+                  <div className="brd p-2">{item.id}</div>
+                  <div className="mx-2">
+                    <img className="h-16 w-16 " src={item.images[0]} alt="" />
+                  </div>
+                  <div className="brd p-2  ">{item.product_name}</div>
+                  <div>{item.brand}</div>
+                  {/* <div>
+                    <QuantityAdder {...item} />
+                  </div> */}
+                  <button
+                    className="brd p-2"
+                    onClick={() => deleteCartItem(item.id)}
+                  >
+                    delete
+                  </button>
+                </div>
+              </div>
+            </>
           );
         })}
       </div>
+      <hr className="horizon boder border-slate-800 mx-4 m-2" />
       <div>
-        <button onClick={() => deleteAllCartItems()}>delete All</button>
+        <button className="p-4 m-4" onClick={() => deleteAllCartItems()}>
+          delete All
+        </button>
       </div>
+      <hr className="horizon boder border-slate-800 mx-4 m-2 " />
     </>
   );
 };
