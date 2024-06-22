@@ -27,6 +27,7 @@ const CartProvider = ({ children }) => {
   const initialState = {
     // cart: getLocalCartData(),
     cart: [],
+    totalItems : 0 ,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -89,6 +90,15 @@ const CartProvider = ({ children }) => {
     dispatch({ type: "DEC_AMOUNT", payload: id });
   };
 
+  // const checkCart = () =>{
+  //   console.log("i m clicked")
+  //   dispatch ({ type : 'CHECK_CART' })
+  // }
+
+useEffect(()=>{
+  dispatch ({ type : 'CHECK_CART' })
+},[state.cart])
+
   return (
     <CartContext.Provider
       value={{
@@ -99,6 +109,7 @@ const CartProvider = ({ children }) => {
         deleteAllCartItems: deleteAllCartItems,
         increaseAmount: increaseAmount,
         decreaseAmount: decreaseAmount,
+        // checkCart : checkCart ,
       }}
     >
       {children}

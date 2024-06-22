@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
 
 const Navbar = () => {
+  const { state } = useContext(CartContext)
   return (
     <div>
       <section>
@@ -31,12 +33,13 @@ const Navbar = () => {
                 </li>
                 <li className="navlink">
                   <NavLink to="/cart" className="clickLink">
-                    Cart
+                    Cart : { state.totalItems} 
                   </NavLink>
                 </li>
               </ul>
             </div>
           </div>
+          
           <div className="horizonLineBox">
             <hr className="horizon boder border-slate-800 mx-4" />
           </div>

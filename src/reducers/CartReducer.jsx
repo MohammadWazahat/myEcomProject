@@ -122,6 +122,17 @@ const CartReducer = (state, action) => {
       cart: updatedCart,
     };
   }
+if (action.type === 'CHECK_CART'){
+  let updateItemVal = state.cart.reduce((initialVal , item )=>{
+    let { amount } = item ;
+    initialVal = initialVal + amount ;
+    return initialVal ;
+  },0);
+  return {
+    ...state,
+    totalItems : updateItemVal ,
+  }
+}
 
   return state;
 };
