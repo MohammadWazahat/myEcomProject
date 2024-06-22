@@ -15,19 +15,21 @@ const CartProvider = ({ children }) => {
   // console.log(amount)
 
   //To Save cart data during refreshes in local storage
-  // const getLocalCartData = () => {
-  //   const cartData = localStorage.getItem("myCart");
-  //   if (cartData == []) {
-  //     return [];
-  //   } else {
-  //     return JSON.parse(cartData);
-  //   }
-  // };
+  const getLocalCartData = () => {
+    const cartData = localStorage.getItem("myCart");
+    if (cartData == []) {
+      return [];
+    } else {
+      return JSON.parse(cartData);
+    }
+  };
 
   const initialState = {
-    // cart: getLocalCartData(),
-    cart: [],
+    cart: getLocalCartData(),
+    // cart: [],
     totalItems : 0 ,
+    totalPrice : 0 ,
+    shippingFee : 100 ,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -74,11 +76,13 @@ const CartProvider = ({ children }) => {
   };
 
   //To Save cart data during refreshes in local storage
-  // useEffect(() => {
-  //   // console.log("hey guys")
-  // //  console.log(state.myData)
-  //   localStorage.setItem("myCart", JSON.stringify(state.cart));
-  // }, [state.cart]);
+  useEffect(() => {
+    // console.log("hey guys")
+  //  console.log(state.myData)
+  dispatch ({ type : 'CHECK_CART' });
+  dispatch ({ type : 'CART_TOTAL_PRICE' });
+    localStorage.setItem("myCart", JSON.stringify(state.cart));
+  }, [state.cart]);
 
   const increaseAmount = (id) => {
     // console.log("i m clicked")
@@ -95,9 +99,10 @@ const CartProvider = ({ children }) => {
   //   dispatch ({ type : 'CHECK_CART' })
   // }
 
-useEffect(()=>{
-  dispatch ({ type : 'CHECK_CART' })
-},[state.cart])
+// useEffect(()=>{
+//   dispatch ({ type : 'CHECK_CART' });
+//   dispatch ({ type : 'CART_TOTAL_PRICE' });
+// },[state.cart])
 
   return (
     <CartContext.Provider

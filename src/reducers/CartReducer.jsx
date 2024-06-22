@@ -5,6 +5,7 @@ const CartReducer = (state, action) => {
     const newCartData = {
       id: action.payload.pay1.id,
       quantity: action.payload.pay1.quantity,
+      price : action.payload.pay1.price,
       product_name: action.payload.pay1.product_name,
       images: action.payload.pay1.images,
       amount: action.payload.pay2,
@@ -46,6 +47,7 @@ const CartReducer = (state, action) => {
       const newCartData = {
         id: action.payload.pay1.id,
         quantity: action.payload.pay1.quantity,
+        price : action.payload.pay1.price,
         product_name: action.payload.pay1.product_name,
         images: action.payload.pay1.images,
         amount: action.payload.pay2,
@@ -122,6 +124,7 @@ const CartReducer = (state, action) => {
       cart: updatedCart,
     };
   }
+
 if (action.type === 'CHECK_CART'){
   let updateItemVal = state.cart.reduce((initialVal , item )=>{
     let { amount } = item ;
@@ -131,6 +134,18 @@ if (action.type === 'CHECK_CART'){
   return {
     ...state,
     totalItems : updateItemVal ,
+  }
+}
+
+if (action.type === 'CART_TOTAL_PRICE'){
+  let myToalPrice = state.cart.reduce((initialVal , item )=>{
+    let {price , amount } = item ;
+    initialVal = initialVal + price * amount ;
+    return initialVal ;
+  },0);
+  return {
+    ...state,
+    totalPrice : myToalPrice ,
   }
 }
 

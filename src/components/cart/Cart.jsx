@@ -26,12 +26,14 @@ const Cart = () => {
                   <img className="h-16 w-16 " src={item.images[0]} alt="" />
                 </div>
                 <div className="brd p-2  ">{item.product_name}</div>
-                <div>{item.brand}</div>
+                <div className="brd p-2  ">{item.brand}</div>
+                <div className="brd p-2  ">item price : {item.price}</div>
                 <div className="brd p-2">quantity left : {item.quantity}</div>
              
                 <button onClick={() => decreaseAmount(item.id)}>decrease</button>
                 <div className="brd p-2">Amount left : {item.amount}</div>
                 <button onClick={() => increaseAmount(item.id)}>increase</button>
+                <div className="brd p-2  "> sub total {item.price * item.amount}</div>
                 <button
                   className="brd p-2"
                   onClick={() => deleteCartItem(item.id)}
@@ -42,6 +44,11 @@ const Cart = () => {
             </div>
           );
         })}
+      </div>
+      <div>
+        <div>cart total : {state.totalPrice}$ </div>
+        <div>shipping fee : {state.shippingFee}$</div>
+        <div>order total : {state.totalPrice + state.shippingFee }$ </div>
       </div>
 
       <hr className="horizon border border-slate-800 mx-4 m-2" />
