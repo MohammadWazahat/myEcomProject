@@ -12,6 +12,7 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
     const { myData , amount } = useContext(AllDataContext);
+// console.log(amount)
 
   //To Save cart data during refreshes in local storage
   // const getLocalCartData = () => {
@@ -25,26 +26,27 @@ const CartProvider = ({ children }) => {
 
   const initialState = {
     // cart: getLocalCartData(),
-    amount : amount,
     cart : [],
   };
-
-  // useEffect(()=>{
-  //   console.log(state.amount)
-  // },[amount])
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // For adding item in the cart from product page
   const AddToMyCart = (x) => {
     // console.log(x)
-    dispatch({ type: "ADD_TO_MY_CART", payload: x });
+    dispatch({ type: "ADD_TO_MY_CART", payload:{
+      pay1 : x ,
+      pay2 : 1 ,
+    } });
   };
 
   // For adding item in the cart from view page
   const AddMoreToMyCart = (x) => {
     // console.log("i m clicked");
-    dispatch({ type: "ADD_MORE_TO_MY_CART", payload: x });
+    dispatch({ type: "ADD_MORE_TO_MY_CART", payload:{
+      pay1 : x ,
+      pay2 : amount ,
+    }});
   };
 
   // For deleting Single item from the cart by delete button/icon

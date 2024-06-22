@@ -1,21 +1,30 @@
 const CartReducer = (state, action) => {
   if (action.type === "ADD_TO_MY_CART") {
-    // const a = action.payload;
     // console.log(state);
-    // console.log(a);
+    // console.log(action.payload)
+    const newCartData = {
+      id: action.payload.pay1.id,
+      quantity: action.payload.pay1.quantity,
+      amount: action.payload.pay2,
+    };
     return {
       ...state,
-      cart: [...state.cart, action.payload],
+      cart: [...state.cart, newCartData],
     };
   }
 
   if (action.type === "ADD_MORE_TO_MY_CART") {
-    // const a = action.payload;
     // console.log(state);
-    // console.log(a);
+    // console.log(action.payload)
+    const newCartData = {
+      id: action.payload.pay1.id,
+      quantity: action.payload.pay1.quantity,
+      amount: action.payload.pay2,
+    };
+    // console.log(newCartData);
     return {
       ...state,
-      cart: [...state.cart, action.payload],
+      cart: [...state.cart, newCartData],
     };
   }
 
@@ -32,7 +41,7 @@ const CartReducer = (state, action) => {
   if (action.type === "DELETE_ALL_CART_ITEM") {
     return {
       ...state,
-      cart:[],
+      cart: [],
     };
   }
 

@@ -16,13 +16,14 @@ const DataProvider = ({ children }) => {
     setViewData({ ...x });
     // console.log(viewData);
   };
-  console.log(viewData);
+  // console.log(viewData);
 
   const [amount, setAmount] = useState(1);
   const setDecrease = () => {
     amount > 1 ? setAmount(amount - 1) : setAmount(1);
   };
   const setIncrease = () => {
+    // console.log(amount)
       const stock = viewData.quantity;
     amount < stock ? setAmount(amount + 1) : setAmount(stock);
   };

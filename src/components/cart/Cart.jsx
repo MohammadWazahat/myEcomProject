@@ -7,8 +7,8 @@ const Cart = () => {
   const { state, deleteCartItem, deleteAllCartItems } = useContext(CartContext);
   //  console.log(state)
   //  console.log(state.cart)
+  //  console.log(state.amount)
   const data = state.cart;
-  // console.log(data)
   return (
     <>
       <div className="brd flex flex-col gap-2">
@@ -18,14 +18,13 @@ const Cart = () => {
               <div>
                 <div className="flex gap-8 brd p-4 m-2" key={index}>
                   <div className="brd p-2">{item.id}</div>
-                  <div className="mx-2">
+                  {/* <div className="mx-2">
                     <img className="h-16 w-16 " src={item.images[0]} alt="" />
-                  </div>
-                  <div className="brd p-2  ">{item.product_name}</div>
-                  <div>{item.brand}</div>
-                  {/* <div>
-                    <QuantityAdder {...item} />
                   </div> */}
+                  {/* <div className="brd p-2  ">{item.product_name}</div>
+                  <div>{item.brand}</div> */}
+                  <div className="brd p-2">quantity : {item.quantity}</div>
+                  <div className="brd p-2">Amount : {item.amount}</div>
                   <button
                     className="brd p-2"
                     onClick={() => deleteCartItem(item.id)}
@@ -38,6 +37,7 @@ const Cart = () => {
           );
         })}
       </div>
+
       <hr className="horizon boder border-slate-800 mx-4 m-2" />
       <div>
         <button className="p-4 m-4" onClick={() => deleteAllCartItems()}>
