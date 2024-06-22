@@ -24,7 +24,7 @@ const DataProvider = ({ children }) => {
   };
   const setIncrease = () => {
     // console.log(amount)
-      const stock = viewData.quantity;
+    const stock = viewData.quantity;
     amount < stock ? setAmount(amount + 1) : setAmount(stock);
   };
 
